@@ -12,20 +12,21 @@ ShortIsGd - A simple interface to is.gd URL shortener
 
 It is a simple interface to is.gd URL shortener without unnecessary dependencies.
 
-It caches results and stops making requests for some time if the servers demands
-so.
+It caches results. Also it stops making requests for some time if the server
+demands so.
 
 =over 4
 
 =item shorten ( $url )
 
-Returns an undefined value if no argument provided. Otherwise returns a hash. If
+Argument $url is the URL to be shortened.
+
+The function seturns an undefined value if no argument is provided or the argument
+doesn't start with http:// or https://. Otherwise returns a hash. If
 the server returns a shortened URL (no error occured), the hash key is B<url>
 and the value contains shortened URL. Otherwise a hash with one key, B<error_text>
 is returned. The value contains a human readable error description that can be
 displayed as is.
-
-The URL must begin with http:// or https://.
 
 =item $min_url_len
 
