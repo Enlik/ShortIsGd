@@ -1,0 +1,22 @@
+=head1 DESCRIPTION
+
+Here is a Perl module and example file for a URL shortener service. A script
+for ekg2 capable of shortening long URLs will be uploaded soon.
+
+Here's description of files.
+
+=over 4
+
+=item ShortIsGd.pm
+
+Perl module for the is.gd URL shortener service. Documentation of the module
+is included inside it. Execute 'perldoc ShortIsGd.pm' or open the file in any
+text editor to see it.
+
+=item short.pl
+
+Example script showing usage of the ShortIsGd module.
+
+=back
+
+=cut 
