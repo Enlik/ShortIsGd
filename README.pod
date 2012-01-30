@@ -1,8 +1,8 @@
 =head1 OVERVIEW
 
 Here is a Perl module for a URL shortener service and an example script showing
-its usage. Also a [drums] script - URL shortener for [more drums]
-L<ekg2|http://www.ekg2.org/> is available!
+its usage. Also a [drums] script - URL shortener for [more drums] ekg2
+(L<http://www.ekg2.org/>) is available!
 
 Here's description of files.
 
@@ -69,7 +69,6 @@ Available from L<http://www.ekg2.org/download.php> or from
 L<https://github.com/leafnode/ekg2>.
 
 =item *
-
 A computer.
 
 =back
