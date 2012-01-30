@@ -1,9 +1,14 @@
-=head1 DESCRIPTION
+=head1 OVERVIEW
 
-Here is a Perl module and example file for a URL shortener service. A script
-for ekg2 capable of shortening long URLs will be uploaded soon.
+Here is a Perl module for a URL shortener service and an example script showing
+its usage. Also a [drums] script - URL shortener for [more drums]
+L<ekg2|http://www.ekg2.org/> is available!
 
 Here's description of files.
+
+=head1 GOODIES
+
+=head2 ShortIsGd - URL shortener
 
 =over 4
 
@@ -18,5 +23,58 @@ text editor to see it.
 Example script showing usage of the ShortIsGd module.
 
 =back
+
+=head2 ekg2_urlshort.pl - a URL shortener for ekg2
+
+The script provides a "/cut" command. Type "/cut help" after loading it to see
+help.
+
+The script is given in two versions. They're equally functional.
+
+=over 4
+
+=item ekg2_urlshort.pl
+
+This version has to be used with ShortIsGd.pm which is available here too. Put
+the .pm file (Perl module) in any directory where perl looks for its
+modules. Current working directory should be okay too if you execute ekg2 from it.
+
+=item ekg2_urlshort_sam.pl
+
+This script already contains ShortIsGd, so you'll need only it.
+
+=back
+
+=head3 Requirements and usage.
+
+=over 4
+
+=item *
+Perl
+
+=item *
+LWP::UserAgent
+
+(liburi-perl, dev-perl/URI)
+
+=item *
+URI::Escape
+
+(libwww-perl, dev-perl/libwww-perl)
+
+=item *
+ekg2
+
+Available from L<http://www.ekg2.org/download.php> or from
+L<https://github.com/leafnode/ekg2>.
+
+=item *
+
+A computer.
+
+=back
+
+The module can be loaded like this: B</script +/path/script.pl>. You may need
+to load Perl plugin first: B</plugin +perl>.
 
 =cut 
