@@ -13,17 +13,17 @@ use ShortIsGd;
 # /cut NUMBER prints shortened version of NUMBER of last URLs
 # /cut help for help
 
-our $VERSION = "0.1";
+our $VERSION = "0.2";
 our %EKG2 = (
 	authors     => "Enlik",
 	contact     => "poczta-sn*gazeta.pl",
 	description => "URL shortener",
 	license     => "MIT",
-	changed     => "2012-01-30"
+	changed     => "2012-02-01"
 );
 
 # remember 9 last URLs per sender
-my %nickurl = ();
+our %nickurl = ();
 
 sub add_url {
 	# $nick is sender's "proto:id" string (can be irc:channel) or a nick

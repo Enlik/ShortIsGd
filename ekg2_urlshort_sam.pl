@@ -5,6 +5,10 @@
 
 {
 # this module with documentation can be found at: https://github.com/Enlik/ShortIsGd
+# Modified a bit to use package scope variables, because otherwise if script is
+# loaded in (current) ekg2 via autorun, warnings are printed, like this one below.
+# Variable "$startlocktime" will not stay shared at (eval 2) line 39
+
 package ShortIsGd;
 use warnings;
 use strict;
@@ -14,10 +18,10 @@ use URI::Escape;
 our $min_url_len = 30;
 our $CACHE_MAX = 100;
 
-my $ua;
-my @cache = ();
-my $startlocktime;
-my $lock_time_s = 30;
+our $ua;
+our @cache = ();
+our $startlocktime;
+our $lock_time_s = 30;
 
 sub shorten {
 	my $url = shift or return;
@@ -91,17 +95,17 @@ use strict;
 # /cut NUMBER prints shortened version of NUMBER of last URLs
 # /cut help for help
 
-our $VERSION = "0.1";
+our $VERSION = "0.2";
 our %EKG2 = (
 	authors     => "Enlik",
 	contact     => "poczta-sn*gazeta.pl",
 	description => "URL shortener",
 	license     => "MIT",
-	changed     => "2012-01-30"
+	changed     => "2012-02-01"
 );
 
 # remember 9 last URLs per sender
-my %nickurl = ();
+our %nickurl = ();
 
 sub add_url {
 	# $nick is sender's "proto:id" string (can be irc:channel) or a nick
