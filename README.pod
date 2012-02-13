@@ -70,7 +70,7 @@ L<https://github.com/leafnode/ekg2>.
 
 =back
 
-The script can be loaded using this command: B</script +/path/script.pl>. It it doesn't work, try this: B</perl:load /path/script.pl>.
+The script can be loaded using this command: B</script +/path/script.pl>. If it doesn't work, try this: B</perl:load /path/script.pl>.
 
 You may need to load Perl plugin first: B</plugin +perl>.
 
