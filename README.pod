@@ -68,12 +68,10 @@ ekg2
 Available from L<http://www.ekg2.org/download.php> or from
 L<https://github.com/leafnode/ekg2>.
 
-=item *
-A computer.
-
 =back
 
-The module can be loaded like this: B</script +/path/script.pl>. You may need
-to load Perl plugin first: B</plugin +perl>.
+The script can be loaded using this command: B</script +/path/script.pl>. It it doesn't work, try this: B</perl:load /path/script.pl>.
+
+You may need to load Perl plugin first: B</plugin +perl>.
 
 =cut 
