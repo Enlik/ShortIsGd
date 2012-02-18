@@ -95,13 +95,13 @@ use strict;
 # /cut NUMBER prints shortened version of NUMBER of last URLs
 # /cut help for help
 
-our $VERSION = "0.2";
+our $VERSION = "0.3";
 our %EKG2 = (
 	authors     => "Enlik",
 	contact     => "poczta-sn*gazeta.pl",
 	description => "URL shortener",
 	license     => "MIT",
-	changed     => "2012-02-01"
+	changed     => "2012-02-18"
 );
 
 # remember 9 last URLs per sender
@@ -135,22 +135,25 @@ sub print_url_for_window {
 		my $begin = @urls - $max;
 		$begin = 0 if $begin < 0;
 		for my $url (@urls[$begin .. $#urls]) { # argh I tend to write a comma
-			$base_url = "[$1]" if $url =~ m!^https?://([^/]+)!;
+			$base_url = $1 if $url =~ m!^https?://([^/]+)!;
 			%reply = ShortIsGd::shorten($url);
 			if ($reply{url}) {
-				Ekg2::echo ($base_url . " => " . $reply{url});
+				Ekg2::Window::print_format ($w, "urlshort_print_url",
+					$base_url, $reply{url});
 			}
 			elsif ($reply{err_text}) {
-				Ekg2::echo ($base_url . " -> error: " . $reply{err_text});
+				Ekg2::Window::print_format ($w, "generic2",
+					"[$base_url] -> error: " . $reply{err_text});
 			}
 			else {
-				Ekg2::echo ($base_url . " -> full URL: [$url]: something " .
-					"wrong has occured. Please file a bug providing this message.");
+				Ekg2::Window::print_format ($w, "generic_error",
+					$base_url . " -> full URL: [$url]: something wrong has " .
+					"occured. Please file a bug providing this message.");
 			}
 		}
 	}
 	else {
-		Ekg2::echo ("No URLs here.")
+		Ekg2::Window::print_format ($w, "generic2", "No URLs here.");
 	}
 }
 
@@ -181,24 +184,23 @@ sub cmd_handler {
 	my ($cmd, $args) = @_;
 	$args = "" unless defined $args; # maybe always defined, but it won't hurt
 	return unless $cmd and $cmd eq "cut";
+	my $w = Ekg2::window_current();
+
 	if ($args eq "help") {
-		Ekg2::echo ("/cut displays the last URL shortened.");
-		Ekg2::echo ("/cut <number> displays the last <number> URLs shortened " .
-			"(maximum 9)");
+		Ekg2::Window::print ($w, "/cut displays the last URL shortened.");
+		Ekg2::Window::print ($w, "/cut <number> displays the last <number> " .
+			"URLs shortened (maximum 9)");
 	}
-	elsif ($args =~ /^\d$/) {
-		my $w = Ekg2::window_current();
+	elsif ($args =~ /^[0-9]?$/) {
+		$args = 1 if $args eq "";
 		print_url_for_window ($w, $args);
 	}
-	elsif ($args eq "") {
-		my $w = Ekg2::window_current();
-		print_url_for_window ($w, 1);
-	}
 	else {
-		Ekg2::echo ("try /cut help");
+		Ekg2::Window::print ($w, "try /cut help");
 	}
 }
 
+Ekg2::format_add("urlshort_print_url", "%> %T[%1]%n => %G%2%n");
 Ekg2::handler_bind('protocol-message', 'msg_handler');
 Ekg2::command_bind('cut', 'cmd_handler');
 return 1;
