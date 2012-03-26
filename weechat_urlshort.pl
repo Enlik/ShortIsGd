@@ -31,7 +31,7 @@ use ShortIsGd;
 # /cut NUMBER prints shortened version of NUMBER of last URLs
 # /cut help for help
 
-weechat::register("urlshort", "Enlik", "0.1", "MIT",
+weechat::register("urlshort", "Enlik", "0.1.1", "MIT",
 	"Shortens long URLs on demand", "", "");
 weechat::hook_print ("", "", "://", 1, "print_cb", "");
 weechat::hook_command ("cut", "/cut displays the last URL shortened. " .
@@ -42,7 +42,7 @@ weechat::hook_command ("cut", "/cut displays the last URL shortened. " .
 our %nickurl = ();
 
 sub add_url {
-	# $id: buffer
+	# $id: buffer name
 	# $url is a long URL
 	my ($id, $url) = @_;
 	my @urls = ();
@@ -56,7 +56,7 @@ sub add_url {
 
 sub print_url_for_window {
 	my ($w, $max) = @_;
-	my $id = $w;
+	my $id = weechat::buffer_get_string($w, "name");
 	my %reply;
 	my $base_url = "";
 
@@ -103,7 +103,7 @@ sub print_cb {
 	my $R = qr{(?:^| )((?:https?://)[\w\d:#@%/,;$()!~_\?\+-=\.&\|-]+)(?= |$)}m;
 
 	while ($message =~ /$R/g) {
-		add_url ($buffer, $1);
+		add_url (weechat::buffer_get_string($buffer, "name"), $1);
 	}
 
 	weechat::WEECHAT_RC_OK;
