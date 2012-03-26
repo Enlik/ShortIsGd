@@ -13,7 +13,7 @@ use ShortIsGd;
 # /cut NUMBER prints shortened version of NUMBER of last URLs
 # /cut help for help
 
-our $VERSION = "0.3";
+our $VERSION = "0.4";
 our %EKG2 = (
 	authors     => "Enlik",
 	contact     => "poczta-sn*gazeta.pl",
@@ -79,7 +79,7 @@ sub msg_handler {
 	my ($session, $sender, $rcpt, $text) = @_;
 	return 1 if ($$session eq $$sender);
 	# \x{1b} is Esc control char. Hello IRC plugin!
-	my $R = qr{(?:^| )((?:https?://)[\w\d:#@%/,;$()~_\?\+-=\.&\|-]+)(?= |\x{1b}|$)}m;
+	my $R = qr{(?:^| )((?:https?://)[\w\d:#@%/,;$()!~_\?\+-=\.&\|-]+)(?= |\x{1b}|$)}m;
 	my $url;
 	my $USER;
 
