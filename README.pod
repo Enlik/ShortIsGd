@@ -1,8 +1,10 @@
 =head1 OVERVIEW
 
 Here is a Perl module for a URL shortener service and an example script showing
-its usage. Also a [drums] script - URL shortener for [more drums] ekg2
-(L<http://www.ekg2.org/>) is available!
+its usage.
+
+Also URL shortener scripts for B<ekg2> (L<http://www.ekg2.org/>) and
+B<weechat> (L<http://www.weechat.org/>) are available!
 
 Here's description of files.
 
@@ -37,7 +39,8 @@ The script is given in two versions. They're equally functional.
 
 This version has to be used with ShortIsGd.pm which is available here too. Put
 the .pm file (Perl module) in any directory where perl looks for its
-modules. Current working directory should be okay too if you execute ekg2 from it.
+modules. One of such directories should be the one from where the application
+was started.
 
 =item ekg2_urlshort_sam.pl
 
@@ -70,8 +73,27 @@ L<https://github.com/leafnode/ekg2>.
 
 =back
 
-The script can be loaded using this command: B</script +/path/script.pl>. If it doesn't work, try this: B</perl:load /path/script.pl>.
+The script can be loaded using this command: B</script +/path/script.pl>. If it
+doesn't work, try this: B</perl:load /path/script.pl>.
 
 You may need to load Perl plugin first: B</plugin +perl>.
 
-=cut 
+=head2 weechat_urlshort.pl - a URL shortener for weechat
+
+The script provides a "/cut" command. Type "/help cut" after loading it to see
+help.
+
+It works the same way as the one for ekg2, described above. It depends on the
+same module, and the note about where to put ShortIsGd.pm applies here too.
+
+=head3 Requirements and usage.
+
+=over 4
+
+Same as above, except that you need weechat.
+
+=back
+
+Load the script using: B</perl load weechat_urlshort.pl>.
+
+=cut
