@@ -58,12 +58,12 @@ Perl
 =item *
 LWP::UserAgent
 
-(liburi-perl, dev-perl/URI)
+(libwww-perl, dev-perl/libwww-perl)
 
 =item *
 URI::Escape
 
-(libwww-perl, dev-perl/libwww-perl)
+(liburi-perl, dev-perl/URI)
 
 =item *
 ekg2
@@ -88,11 +88,7 @@ same module, and the note about where to put ShortIsGd.pm applies here too.
 
 =head3 Requirements and usage.
 
-=over 4
-
 Same as above, except that you need weechat.
-
-=back
 
 Load the script using: B</perl load weechat_urlshort.pl>.
 
