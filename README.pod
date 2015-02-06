@@ -26,6 +26,11 @@ Example script showing usage of the ShortIsGd module.
 
 =back
 
+=head2 Note
+
+Unlike most of the URL shorteners, the ones described below "cut" the links
+only when requested!
+
 =head2 ekg2_urlshort.pl - a URL shortener for ekg2
 
 The script provides a "/cut" command. Type "/cut help" after loading it to see

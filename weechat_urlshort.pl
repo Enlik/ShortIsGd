@@ -29,7 +29,7 @@ use ShortIsGd;
 # installs command /cut
 # /cut prints shortened version of last URL
 # /cut NUMBER prints shortened version of NUMBER of last URLs
-# /cut help for help
+# /help cut prints help
 
 weechat::register("urlshort", "Enlik", "0.1.1", "MIT",
 	"Shortens long URLs on demand", "", "");
@@ -118,6 +118,6 @@ sub cmd_cb {
 		print_url_for_window ($buffer, $args);
 	}
 	else {
-		weechat::print ($buffer, "try help /cut");
+		weechat::print ($buffer, "try /help cut");
 	}
 }
